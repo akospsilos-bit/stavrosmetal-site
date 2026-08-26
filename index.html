@@ -181,6 +181,36 @@
   }
   .g-item img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .3s ease;}
   .g-item:hover img{transform:scale(1.05);}
+  .g-item{cursor:pointer;}
+
+  .lightbox{
+    display:none; position:fixed; inset:0; z-index:200;
+    background:rgba(10,11,13,.95);
+    align-items:center; justify-content:center; padding:60px 20px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-img{max-width:90vw; max-height:85vh; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,.6);}
+  .lightbox-close{
+    position:absolute; top:18px; right:20px;
+    background:none; border:none; color:var(--steel-1); font-size:2.4rem;
+    line-height:1; cursor:pointer; padding:6px 12px;
+    transition:color .2s ease;
+  }
+  .lightbox-close:hover{color:var(--gold);}
+  .lightbox-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:48px; height:48px; border-radius:50%;
+    background:rgba(255,255,255,.06); border:1px solid var(--line);
+    color:var(--steel-1); font-size:2rem; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .lightbox-nav:hover{border-color:var(--gold); color:var(--gold);}
+  .lightbox-prev{left:12px;}
+  .lightbox-next{right:12px;}
+  @media (max-width:640px){
+    .lightbox-nav{width:40px; height:40px; font-size:1.6rem;}
+  }
 
   .about{
     display:grid; grid-template-columns:.9fr 1.1fr; gap:70px; align-items:center;
@@ -359,23 +389,30 @@
         <p>Δείγματα από ολοκληρωμένες κατασκευές.</p>
       </div>
       <div class="gallery-grid">
-        <div class="g-item"><img src="erga/erga-01.jpg" alt="Πτυσσόμενη μεταλλική πόρτα αποθήκης" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-02.jpg" alt="Κάγκελο περίφραξης πολυκατοικίας" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-03.jpg" alt="Πτυσσόμενη μεταλλική πόρτα αποθήκης, δεύτερη όψη" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-04.jpg" alt="Γυάλινο χώρισμα γραφείου με μεταλλικό σκελετό" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-05.jpg" alt="Πτυσσόμενη πόρτα αλουμινίου εστιατορίου" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-06.jpg" alt="Συρόμενη περίφραξη αλουμινίου" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-07.jpg" alt="Θωρακισμένη πόρτα ασφαλείας" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-08.jpg" alt="Μεταλλικό διαχωριστικό εσωτερικού χώρου" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-09.jpg" alt="Μεταλλική σκάλα υπό κατασκευή σε βιομηχανικό χώρο" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-10.jpg" alt="Μεταλλική σκάλα με κάγκελο πλέγματος" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-11.jpg" alt="Μεταλλικός σκελετός κατασκευής υπό συγκόλληση" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-12.jpg" alt="Κάγκελα βεράντας πολυκατοικίας" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-13.jpg" alt="Συρόμενη περίφραξη αλουμινίου, νυχτερινή λήψη" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-14.jpg" alt="Εσωτερικές μεταλλικές πόρτες με τζάμι" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-15.jpg" alt="Ηλεκτρικό ρολό γκαράζ και περίφραξη αλουμινίου" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-16.jpg" alt="Μεταλλική κατασκευή μπάνιου" loading="lazy"></div>
-        <div class="g-item"><img src="erga/erga-17.jpg" alt="Μεταλλική κατασκευή πάγκου" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(0)"><img src="erga/erga-01.jpg" alt="Πτυσσόμενη μεταλλική πόρτα αποθήκης" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(1)"><img src="erga/erga-02.jpg" alt="Κάγκελο περίφραξης πολυκατοικίας" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(2)"><img src="erga/erga-03.jpg" alt="Πτυσσόμενη μεταλλική πόρτα αποθήκης, δεύτερη όψη" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(3)"><img src="erga/erga-04.jpg" alt="Γυάλινο χώρισμα γραφείου με μεταλλικό σκελετό" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(4)"><img src="erga/erga-05.jpg" alt="Πτυσσόμενη πόρτα αλουμινίου εστιατορίου" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(5)"><img src="erga/erga-06.jpg" alt="Συρόμενη περίφραξη αλουμινίου" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(6)"><img src="erga/erga-07.jpg" alt="Θωρακισμένη πόρτα ασφαλείας" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(7)"><img src="erga/erga-08.jpg" alt="Μεταλλικό διαχωριστικό εσωτερικού χώρου" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(8)"><img src="erga/erga-09.jpg" alt="Μεταλλική σκάλα υπό κατασκευή σε βιομηχανικό χώρο" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(9)"><img src="erga/erga-10.jpg" alt="Μεταλλική σκάλα με κάγκελο πλέγματος" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(10)"><img src="erga/erga-11.jpg" alt="Μεταλλικός σκελετός κατασκευής υπό συγκόλληση" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(11)"><img src="erga/erga-12.jpg" alt="Κάγκελα βεράντας πολυκατοικίας" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(12)"><img src="erga/erga-13.jpg" alt="Συρόμενη περίφραξη αλουμινίου, νυχτερινή λήψη" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(13)"><img src="erga/erga-14.jpg" alt="Εσωτερικές μεταλλικές πόρτες με τζάμι" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(14)"><img src="erga/erga-15.jpg" alt="Ηλεκτρικό ρολό γκαράζ και περίφραξη αλουμινίου" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(15)"><img src="erga/erga-16.jpg" alt="Μεταλλική κατασκευή μπάνιου" loading="lazy"></div>
+        <div class="g-item" onclick="openLightbox(16)"><img src="erga/erga-17.jpg" alt="Μεταλλική κατασκευή πάγκου" loading="lazy"></div>
+      </div>
+
+      <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Κλείσιμο">&times;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navLightbox(-1)" aria-label="Προηγούμενη">&#8249;</button>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navLightbox(1)" aria-label="Επόμενη">&#8250;</button>
       </div>
     </div>
   </section>
@@ -472,6 +509,35 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const galleryImages = Array.from(document.querySelectorAll('.g-item img')).map(img => ({src: img.src, alt: img.alt}));
+  let lightboxIndex = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  function showLightboxImage(){
+    lightboxImg.src = galleryImages[lightboxIndex].src;
+    lightboxImg.alt = galleryImages[lightboxIndex].alt;
+  }
+  function openLightbox(i){
+    lightboxIndex = i;
+    showLightboxImage();
+    lightbox.classList.add('open');
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+  }
+  function navLightbox(dir){
+    lightboxIndex = (lightboxIndex + dir + galleryImages.length) % galleryImages.length;
+    showLightboxImage();
+  }
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft') navLightbox(-1);
+    if(e.key === 'ArrowRight') navLightbox(1);
+  });
 </script>
 
 </body>
