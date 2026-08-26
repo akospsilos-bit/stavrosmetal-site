@@ -158,28 +158,15 @@
   .svc p{color:var(--text-dim); font-size:.94rem; margin-top:8px;}
 
   .gallery-grid{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:14px;
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:14px;
   }
-  .gallery-grid > :first-child{grid-column:span 2; grid-row:span 2;}
   .g-item{
     position:relative; overflow:hidden; aspect-ratio:1/1;
     background:linear-gradient(150deg,#26282c,#18191c 65%);
     border:1px solid var(--line);
-    display:flex; align-items:flex-end;
   }
-  .gallery-grid > :first-child .g-item{aspect-ratio:auto; height:100%;}
-  .g-item img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .3s ease;}
-  .g-item img.loaded{opacity:1;}
-  .g-tag{
-    position:relative; z-index:2; padding:16px;
-    font-family:'Rajdhani', sans-serif; font-weight:600; letter-spacing:.05em;
-    text-transform:uppercase; font-size:.85rem; color:var(--steel-2);
-  }
-  .g-placeholder-note{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-    color:var(--line); font-size:.75rem; text-align:center; padding:20px;
-    font-family:'Rajdhani',sans-serif; letter-spacing:.05em; text-transform:uppercase;
-  }
+  .g-item img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .3s ease;}
+  .g-item:hover img{transform:scale(1.05);}
 
   .about{
     display:grid; grid-template-columns:.9fr 1.1fr; gap:70px; align-items:center;
@@ -225,9 +212,6 @@
     .svc-grid{grid-template-columns:repeat(2,1fr);}
     .about{grid-template-columns:1fr;}
     .contact-grid{grid-template-columns:1fr;}
-    .gallery-grid{grid-template-columns:repeat(2,1fr);}
-    .gallery-grid > :first-child{grid-column:span 2; grid-row:span 1; aspect-ratio:16/10;}
-    .gallery-grid > :first-child .g-item{height:auto; aspect-ratio:16/10;}
   }
   @media (max-width: 640px){
     .nav-links{display:none;}
@@ -357,11 +341,23 @@
         <p>Δείγματα από ολοκληρωμένες κατασκευές.</p>
       </div>
       <div class="gallery-grid">
-        <div class="g-item"><div class="g-placeholder-note">project-01.jpg<br>(βάλε φωτογραφία εδώ)</div></div>
-        <div class="g-item"><div class="g-placeholder-note">project-02.jpg</div></div>
-        <div class="g-item"><div class="g-placeholder-note">project-03.jpg</div></div>
-        <div class="g-item"><div class="g-placeholder-note">project-04.jpg</div></div>
-        <div class="g-item"><div class="g-placeholder-note">project-05.jpg</div></div>
+        <div class="g-item"><img src="erga/erga-01.jpg" alt="Πτυσσόμενη μεταλλική πόρτα αποθήκης" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-02.jpg" alt="Κάγκελο περίφραξης πολυκατοικίας" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-03.jpg" alt="Πτυσσόμενη μεταλλική πόρτα αποθήκης, δεύτερη όψη" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-04.jpg" alt="Γυάλινο χώρισμα γραφείου με μεταλλικό σκελετό" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-05.jpg" alt="Πτυσσόμενη πόρτα αλουμινίου εστιατορίου" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-06.jpg" alt="Συρόμενη περίφραξη αλουμινίου" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-07.jpg" alt="Θωρακισμένη πόρτα ασφαλείας" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-08.jpg" alt="Μεταλλικό διαχωριστικό εσωτερικού χώρου" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-09.jpg" alt="Μεταλλική σκάλα υπό κατασκευή σε βιομηχανικό χώρο" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-10.jpg" alt="Μεταλλική σκάλα με κάγκελο πλέγματος" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-11.jpg" alt="Μεταλλικός σκελετός κατασκευής υπό συγκόλληση" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-12.jpg" alt="Κάγκελα βεράντας πολυκατοικίας" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-13.jpg" alt="Συρόμενη περίφραξη αλουμινίου, νυχτερινή λήψη" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-14.jpg" alt="Εσωτερικές μεταλλικές πόρτες με τζάμι" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-15.jpg" alt="Ηλεκτρικό ρολό γκαράζ και περίφραξη αλουμινίου" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-16.jpg" alt="Μεταλλική κατασκευή μπάνιου" loading="lazy"></div>
+        <div class="g-item"><img src="erga/erga-17.jpg" alt="Μεταλλική κατασκευή πάγκου" loading="lazy"></div>
       </div>
     </div>
   </section>
