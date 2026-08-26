@@ -64,6 +64,11 @@
   }
   .brand{display:flex; align-items:center; gap:12px;}
   .brand img{height:44px; width:auto;}
+  .brand-wrap{display:flex; flex-direction:column; align-items:flex-start; gap:3px;}
+  .brand-owner{
+    font-family:'Rajdhani', sans-serif; font-weight:600; letter-spacing:.1em;
+    text-transform:uppercase; font-size:.72rem; color:var(--text-dim);
+  }
   .nav-links{display:flex; gap:34px; align-items:center;}
   .nav-links a{
     font-family:'Rajdhani', sans-serif; font-weight:600; letter-spacing:.06em;
@@ -133,15 +138,15 @@
   .stat span{font-size:.82rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.08em;}
 
   .hero-visual{
-    position:relative; aspect-ratio:1/1.05;
-    background:
-      linear-gradient(155deg, #24262b 0%, #1a1c1f 55%, #131417 100%);
-    border:1px solid var(--line);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-    display:flex; align-items:center; justify-content:center;
-    padding:40px;
+    position:relative;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:20px;
   }
-  .hero-visual img{filter:drop-shadow(0 20px 40px rgba(0,0,0,.5));}
+  .hero-visual img{filter:drop-shadow(0 20px 40px rgba(0,0,0,.5)); width:100%; max-width:420px;}
+  .hero-owner{
+    font-family:'Rajdhani', sans-serif; font-weight:600; letter-spacing:.16em;
+    text-transform:uppercase; font-size:.72rem; color:var(--text-dim);
+  }
 
   section{padding:100px 0;}
   .section-head{max-width:640px; margin-bottom:56px;}
@@ -254,12 +259,15 @@
 <header>
   <div class="nav wrap">
     <a href="#top" class="brand">
-      <img src="logo_transparent.png" alt="Stavros Metal">
+      <div class="brand-wrap">
+        <img src="logo_transparent.png" alt="Stavros Metal">
+        <span class="brand-owner">Σταύρος Μπακιρτζόγλου</span>
+      </div>
     </a>
     <nav class="nav-links">
       <a href="#ypiresies">Υπηρεσίες</a>
       <a href="#erga">Έργα</a>
-      <a href="#about">Η Εταιρεία</a>
+      <a href="#about">Σχετικά</a>
       <a href="#epikoinonia">Επικοινωνία</a>
     </nav>
     <a href="tel:2105768753" class="nav-cta">21 0576 8753</a>
@@ -272,7 +280,7 @@
     <div class="wrap hero-inner">
       <div>
         <div class="eyebrow hero-eyebrow">Steel · Aluminium · Constructions — Περιστέρι</div>
-        <h1>Χτίζουμε &<br><span>φορμάρουμε</span> το μέταλλο.</h1>
+        <h1>Μεταλλικές κατασκευές &<br><span>αλουμίνια</span> με ακρίβεια.</h1>
         <p>Αλουμίνια, μεταλλικές κατασκευές, στέγαστρα, σκέπαστρα, κάγκελα, θωρακισμένες πόρτες και πάνελ οροφής-τοίχου — σχεδιασμένα και κατασκευασμένα στα μέτρα του κάθε χώρου.</p>
         <div class="hero-actions">
           <a href="#epikoinonia" class="btn-primary">Ζητήστε προσφορά</a>
@@ -286,6 +294,7 @@
       </div>
       <div class="hero-visual">
         <img src="logo_transparent.png" alt="Stavros Metal logo">
+        <span class="hero-owner">Σταύρος Μπακιρτζόγλου</span>
       </div>
     </div>
   </section>
@@ -456,4 +465,23 @@
         <iframe class="map-frame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=Αναγνωστοπούλου+60,+Περιστέρι+12135&output=embed">
         </iframe>
-      <
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <img src="logo_transparent.png" alt="Stavros Metal">
+    <p>&copy; <span id="year"></span> Stavros Metal — Αναγνωστοπούλου 60, Περιστέρι 12135 · <a href="tel:2105768753" style="color:var(--gold);">21 0576 8753</a></p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
+
