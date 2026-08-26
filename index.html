@@ -111,6 +111,20 @@
     margin-top:22px; max-width:46ch;
     color:var(--text-dim); font-size:1.08rem;
   }
+  .hero-highlights{
+    list-style:none; margin-top:26px; max-width:52ch;
+    display:grid; gap:14px;
+  }
+  .hero-highlights li{
+    position:relative; padding-left:20px;
+    color:var(--text-dim); font-size:.98rem; line-height:1.55;
+  }
+  .hero-highlights li::before{
+    content:""; position:absolute; left:0; top:.5em;
+    width:8px; height:8px; background:var(--gold);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .hero-highlights b{color:var(--steel-1); font-weight:700;}
   .hero-actions{display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;}
   .btn-primary{
     font-family:'Rajdhani', sans-serif; font-weight:700; letter-spacing:.05em;
@@ -248,8 +262,12 @@
     <div class="wrap hero-inner">
       <div>
         <div class="eyebrow hero-eyebrow">Steel · Aluminium · Constructions — Περιστέρι</div>
-        <h1>Μεταλλικές κατασκευές &<br>αλουμίνια με ακρίβεια.</h1>
-        <p>Αλουμίνια, μεταλλικές κατασκευές, στέγαστρα, σκέπαστρα, κάγκελα, θωρακισμένες πόρτες και πάνελ οροφής-τοίχου — σχεδιασμένα και κατασκευασμένα στα μέτρα του κάθε χώρου.</p>
+        <h1>Ποιότητα και <span>καινοτομία</span><br>σε κάθε κατασκευή.</h1>
+        <ul class="hero-highlights">
+          <li><b>Κουφώματα Αλουμινίου:</b> Υψηλή ενεργειακή απόδοση, θερμομόνωση και μέγιστη ασφάλεια.</li>
+          <li><b>Μεταλλικές Κατασκευές:</b> Στέγαστρα, κάγκελα, περιφράξεις και ειδικές αρχιτεκτονικές εφαρμογές προσαρμοσμένες στις ανάγκες σας.</li>
+          <li><b>Ποιότητα &amp; Συνέπεια:</b> Πιστοποιημένα υλικά, αντοχή στον χρόνο και άψογο φινίρισμα με συνέπεια στους χρόνους παράδοσης.</li>
+        </ul>
         <div class="hero-actions">
           <a href="#epikoinonia" class="btn-primary">Ζητήστε προσφορά</a>
           <a href="#erga" class="btn-ghost">Δείτε έργα μας</a>
